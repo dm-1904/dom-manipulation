@@ -1,7 +1,7 @@
 /**
  * SORTING NODES WITHIN A CONTAINER
  * Please, make sure to read the following files in the exercises-info folder before you start
- * * "02 SortingNode.md" 
+ * * "02 SortingNode.md"
 */
 
 /**
@@ -12,7 +12,7 @@
  */
 
 // Your code goes here...
-
+const allItems = document.querySelectorAll('.item')
 
 
 /**
@@ -23,7 +23,7 @@
  */
 
 // Your code goes here...
-
+const sortBtn = document. querySelectorAll('.sortBtn')
 
 
 /**
@@ -38,7 +38,25 @@
  */
 
 // Your code goes here...
-
+const sortData = (str) => {
+  const container = document.getElementById('main')
+  if (str === 'desc') {
+    const sort = (a, b) => {
+      if (a.innerHTML < b.innerHTML) return 1
+      else if (a.innerHTML > b.innerHTML) return -1
+      else return 0
+    }
+    return sort
+  }
+  if (str === 'asc') {
+    const sort = (a, b) => {
+      if (a.innerHTML < b.innerHTML) return -1
+      else if (a.innerHTML > b.innerHTML) return 1
+      else return 0
+    }
+    return sort
+  }
+}
 
 
 /**
@@ -51,4 +69,14 @@
 
 // Your code goes here...
 
-
+for (let btn of sortBtn) {
+  btn.addEventListener('click', () => {
+    const btnClick = this.dataset.sortdir
+    if (btnClick === 'asc') {
+      return sortData('asc')
+    }
+    if (btnClick === 'desc') {
+      return sortData('desc')
+    }
+  })
+}

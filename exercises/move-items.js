@@ -12,7 +12,7 @@
  */
 
 // Your code goes here...
-
+const allItems = document.querySelectorAll('.item')
 
 
 /**
@@ -23,7 +23,7 @@
  * */
 
 // Your code goes here
-
+const main = document.getElementById('main')
 
 
 /**
@@ -34,7 +34,7 @@
  */
 
 // Your code goes here
-
+const favs = document.getElementById('faves')
 
 
 /**
@@ -47,7 +47,33 @@
  */
 
 // Your code goes here
+const updateCollections = (id, direction) => {
+  const targetElm = document.getElementById(id)
+  const targetClass = document.querySelectorAll('.fa-solid')
+  const main = document.getElementById('main')
+  const favs = document.getElementById('favs')
 
+  if (direction === 'toFavs'){
+    favs.appendChild(targetElm)
+    for (let el of targetClass) {
+      if (el.parentElement.parentElement.id === 'favs') {
+        // console.log('el.classlist ', el.classList)
+        el.classList.remove('fa-heart-circle-plus')
+        el.classList.add('fa-heart-crack')
+      }
+    }
+  }
+  if (direction === 'toMain'){
+    main.appendChild(targetElm)
+    for (let el of targetClass) {
+      if (el.parentElement.parentElement.id === 'main') {
+        el.classList.remove('fa-heart-crack')
+        el.classList.add('fa-heart-circle-plus')
+      }
+    }
+  }
+  return
+}
 
 
 /**
@@ -66,4 +92,14 @@
 
 // Your code goes here...
 
-
+for (let el of allItems) {
+  // console.log(el);
+  el.addEventListener('click', () => {
+    if (el.parentElement.id === 'main') {
+      return updateCollections(el.id, 'toFavs')
+    }
+    if (el.parentElement.id === 'favs') {
+      return updateCollections(el.id, 'toMain')
+    }
+  })
+}
