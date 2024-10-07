@@ -38,3 +38,34 @@
  */
 
 // Your code goes here...
+// localStorage.clear()
+const cardNodeList = document.querySelectorAll('.card')
+const cardArr = Array.from(cardNodeList)
+localStorage.setItem('Favorites', 0)
+// console.log(cardNodeList)
+// console.log(cardArr)
+
+const cardStorage = (id) => {
+  const storageData = localStorage.getItem('Favorites')
+  if (!list.includes(id)) {
+    localStorage.setItem('Favorites', id) //left off here
+  }
+}
+
+cardArr.forEach((el) => {
+  console.log(el)
+  el.addEventListener('click', () => {
+    cardStorage(el.id)
+  })
+
+})
+
+
+
+// for (let btn of sortBtn) {
+//   btn.addEventListener('click', () => {
+//     const btnClick = btn.dataset.sortdir
+//     return sortData(btn.dataset.sortdir);
+//   })
+
+// }

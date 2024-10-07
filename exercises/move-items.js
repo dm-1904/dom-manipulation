@@ -53,13 +53,11 @@ const updateCollections = (id, direction) => {
   const main = document.getElementById('main')
   const favs = document.getElementById('favs')
 
-  // console.log("targetElm", targetElm)
   if (direction === 'toFavs') {
     favs.appendChild(targetElm)
     console.log("First Child", targetElm.childNodes[1])
- targetElm.childNodes[1].classList.remove('fa-heart-circle-plus')
-  targetElm.childNodes[1].classList.add('fa-heart-crack')
-
+    targetElm.childNodes[1].classList.remove('fa-heart-circle-plus')
+    targetElm.childNodes[1].classList.add('fa-heart-crack')
   }
   if (direction === 'toMain') {
     main.appendChild(targetElm)
@@ -91,7 +89,6 @@ const updateCollections = (id, direction) => {
 // Your code goes here...
 
 for (let el of allItems) {
-  // console.log(el);
   el.addEventListener('click', () => {
     if (el.parentElement.id === 'main') {
       return updateCollections(el.id, 'toFavs')
