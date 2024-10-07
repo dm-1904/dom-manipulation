@@ -43,18 +43,13 @@ const sortData = (str) => {
   const btnArr = container.children
   const allItemsArr = Array.from(allItems);
   let sortedArr
-  console.log('allItemsArr', allItemsArr)
-  //local compare
-  //querysecectors
 
-  // console.log('btnarr', btnArr)
   if (str === 'desc') {
     sortedArr = allItemsArr.sort((a, b) => {
       if (a.innerHTML < b.innerHTML) return 1
       else if (a.innerHTML > b.innerHTML) return -1
       else return 0
     })
-
   }
   if (str === 'asc') {
     sortedArr = allItemsArr.sort((a, b) => {
@@ -62,12 +57,10 @@ const sortData = (str) => {
       else if (a.innerHTML > b.innerHTML) return 1
       else return 0
     })
-
   }
   let newArr = sortedArr.forEach((el) => {
     container.append(el)
   })
-  console.log('allItemsArr sorted: ', allItemsArr)
   return newArr
 }
 
@@ -86,13 +79,6 @@ const sortData = (str) => {
 for (let btn of sortBtn) {
   btn.addEventListener('click', () => {
     const btnClick = btn.dataset.sortdir
-    // console.log(btnClick)
-    // if (btnClick === 'asc') {
-    //   return sortData('asc')
-    // }
-    // if (btnClick === 'desc') {
-    //   return sortData('desc')
-    // }
     return sortData(btn.dataset.sortdir);
   })
 
