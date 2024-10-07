@@ -48,22 +48,20 @@ const favs = document.getElementById('faves')
 
 // Your code goes here
 const updateCollections = (id, direction) => {
-  const targetElm = document.getElementById(id)
-  const targetClass = document.querySelectorAll('.fa-solid')
+  const targetElm = document.getElementById(id) // element #id
+  const targetClass = document.querySelectorAll('.fa-solid') // .fa-solid
   const main = document.getElementById('main')
   const favs = document.getElementById('favs')
 
-  if (direction === 'toFavs'){
+  // console.log("targetElm", targetElm)
+  if (direction === 'toFavs') {
     favs.appendChild(targetElm)
-    for (let el of targetClass) {
-      if (el.parentElement.parentElement.id === 'favs') {
-        // console.log('el.classlist ', el.classList)
-        el.classList.remove('fa-heart-circle-plus')
-        el.classList.add('fa-heart-crack')
-      }
-    }
+    console.log("First Child", targetElm.childNodes[1])
+ targetElm.childNodes[1].classList.remove('fa-heart-circle-plus')
+  targetElm.childNodes[1].classList.add('fa-heart-crack')
+
   }
-  if (direction === 'toMain'){
+  if (direction === 'toMain') {
     main.appendChild(targetElm)
     for (let el of targetClass) {
       if (el.parentElement.parentElement.id === 'main') {

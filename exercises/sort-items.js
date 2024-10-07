@@ -23,7 +23,7 @@ const allItems = document.querySelectorAll('.item')
  */
 
 // Your code goes here...
-const sortBtn = document. querySelectorAll('.sortBtn')
+const sortBtn = document.querySelectorAll('.sortBtn')
 
 
 /**
@@ -40,22 +40,35 @@ const sortBtn = document. querySelectorAll('.sortBtn')
 // Your code goes here...
 const sortData = (str) => {
   const container = document.getElementById('main')
+  const btnArr = container.children
+  const allItemsArr = Array.from(allItems);
+  let sortedArr
+  console.log('allItemsArr', allItemsArr)
+  //local compare
+  //querysecectors
+
+  // console.log('btnarr', btnArr)
   if (str === 'desc') {
-    const sort = (a, b) => {
+    sortedArr = allItemsArr.sort((a, b) => {
       if (a.innerHTML < b.innerHTML) return 1
       else if (a.innerHTML > b.innerHTML) return -1
       else return 0
-    }
-    return sort
+    })
+
   }
   if (str === 'asc') {
-    const sort = (a, b) => {
+    sortedArr = allItemsArr.sort((a, b) => {
       if (a.innerHTML < b.innerHTML) return -1
       else if (a.innerHTML > b.innerHTML) return 1
       else return 0
-    }
-    return sort
+    })
+
   }
+  let newArr = sortedArr.forEach((el) => {
+    container.append(el)
+  })
+  console.log('allItemsArr sorted: ', allItemsArr)
+  return newArr
 }
 
 
@@ -69,14 +82,18 @@ const sortData = (str) => {
 
 // Your code goes here...
 
+
 for (let btn of sortBtn) {
   btn.addEventListener('click', () => {
-    const btnClick = this.dataset.sortdir
-    if (btnClick === 'asc') {
-      return sortData('asc')
-    }
-    if (btnClick === 'desc') {
-      return sortData('desc')
-    }
+    const btnClick = btn.dataset.sortdir
+    // console.log(btnClick)
+    // if (btnClick === 'asc') {
+    //   return sortData('asc')
+    // }
+    // if (btnClick === 'desc') {
+    //   return sortData('desc')
+    // }
+    return sortData(btn.dataset.sortdir);
   })
+
 }
