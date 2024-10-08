@@ -41,31 +41,37 @@
 // localStorage.clear()
 const cardNodeList = document.querySelectorAll('.card')
 const cardArr = Array.from(cardNodeList)
-localStorage.setItem('Favorites', 0)
-// console.log(cardNodeList)
-// console.log(cardArr)
+const cards = document.querySelectorAll('.card')
+const colorArr = localStorage.getItem('Favorites').split('')
+
+for (let el of cardArr) {
+  if (colorArr.includes(el.id)) {
+    document.getElementById(el.id).style.backgroundColor = 'red'
+  }
+}
 
 const cardStorage = (id) => {
-  const storageData = localStorage.getItem('Favorites')
-  if (!list.includes(id)) {
-    localStorage.setItem('Favorites', id) //left off here
+  let storageData = localStorage.getItem('Favorites')
+  if ((storageData === null) || (!storageData.includes(id))) {
+    storageData += id
+    localStorage.setItem('Favorites', storageData)
+    document.getElementById(id).style.backgroundColor = 'red'
+    return
+  }
+  if (storageData.includes(id)) {
+    const storageArr = localStorage.getItem('Favorites').split('')
+    storageArr.splice(storageArr.indexOf(id), 1)
+    const updatedListValue = storageArr.join('')
+    localStorage.setItem('Favorites', updatedListValue)
+    document.getElementById(id).style.backgroundColor = 'white'
+    return
   }
 }
 
 cardArr.forEach((el) => {
-  console.log(el)
   el.addEventListener('click', () => {
+    console.log(el.id)
     cardStorage(el.id)
   })
 
 })
-
-
-
-// for (let btn of sortBtn) {
-//   btn.addEventListener('click', () => {
-//     const btnClick = btn.dataset.sortdir
-//     return sortData(btn.dataset.sortdir);
-//   })
-
-// }
