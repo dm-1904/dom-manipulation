@@ -71,6 +71,29 @@ const updateCollections = (id, direction) => {
   return
 }
 
+// const updateCollections = (id, direction) => {
+//   const item = document.getElementById(id)
+//   direction = item.parentElement.id
+
+//   item
+//     .querySelector('i')
+//     .classList.remove(
+//       'class',
+//       direction === 'toMain' ? 'fa-heart-circle-plus' : 'fa-heart-crack'
+//     )
+//   item
+//     .querySelector('i')
+//     .classList.add(
+//       direction === 'toFavs' ? 'fa-heart-circle-plus' : 'fa-heart-crack'
+//     )
+
+//   if (direction === 'toFavs') {
+//     main.appendChild(item)
+//   } else {
+//     favs.appendChild(item)
+//   }
+// }
+
 
 /**
  * @task

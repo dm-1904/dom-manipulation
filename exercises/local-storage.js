@@ -39,14 +39,17 @@
 
 // Your code goes here...
 // localStorage.clear()
+// localStorage.setItem('Favorites', null)
 const cardNodeList = document.querySelectorAll('.card')
 const cardArr = Array.from(cardNodeList)
 const cards = document.querySelectorAll('.card')
-const colorArr = localStorage.getItem('Favorites').split('')
 
-for (let el of cardArr) {
-  if (colorArr.includes(el.id)) {
-    document.getElementById(el.id).style.backgroundColor = 'red'
+if(localStorage.getItem('Favorites')) {
+  const colorArr = localStorage.getItem('Favorites').split('')
+  for (let el of cardArr) {
+    if (colorArr.includes(el.id)) {
+      document.getElementById(el.id).style.backgroundColor = 'red'
+    }
   }
 }
 

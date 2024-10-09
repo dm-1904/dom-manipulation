@@ -38,30 +38,17 @@ const sortBtn = document.querySelectorAll('.sortBtn')
  */
 
 // Your code goes here...
-const sortData = (str) => {
+const sortData = (dir) => {
   const container = document.getElementById('main')
-  const btnArr = container.children
-  const allItemsArr = Array.from(allItems);
-  let sortedArr
+  const toSort = Array.from(allItems)
 
-  if (str === 'desc') {
-    sortedArr = allItemsArr.sort((a, b) => {
-      if (a.innerHTML < b.innerHTML) return 1
-      else if (a.innerHTML > b.innerHTML) return -1
-      else return 0
-    })
-  }
-  if (str === 'asc') {
-    sortedArr = allItemsArr.sort((a, b) => {
-      if (a.innerHTML < b.innerHTML) return -1
-      else if (a.innerHTML > b.innerHTML) return 1
-      else return 0
-    })
-  }
-  let newArr = sortedArr.forEach((el) => {
-    container.append(el)
+  toSort.sort((a, b) => {
+    return a.id < b.id ? (dir === 'asc' ? 1 : -1) : dir === 'desc' ? -1 : 1
   })
-  return newArr
+
+  toSort.forEach((item) => {
+    container.appendChild(item)
+  })
 }
 
 
